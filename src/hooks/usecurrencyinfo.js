@@ -6,15 +6,12 @@ function useCurrencyInfo(currency){
     useEffect(() => {
       if (!currency) return;
   
-      fetch(` https://v6.exchangerate-api.com/v6/57b3bb8c1ac6482b75291b36/latest/USD`)
-        .then((res) => res.json())
-        .then((result) => {
-          setData(result.conversion_rates || {});
-        })
-        .catch((err) => {
-          setError(err.message);
-        });
-    }, [currency]);
+      fetch(` https://v6.exchangerate-api.com/v6/9e58a02f9e73201827d30780/latest/${currency}`)
+    .then(res => res.json())
+    .then(data => setData(data.conversion_rates))
+    .catch(err => setError(err.message));
+}, [currency]);
+
   
     return  data;
   }
